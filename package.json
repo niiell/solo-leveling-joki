@@ -19,6 +19,7 @@
   "homepage": "https://github.com/niiell/solo-leveling-joki#readme",
   "description": "",
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "express": "^5.1.0"
   }
 }
