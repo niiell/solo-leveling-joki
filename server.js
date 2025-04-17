@@ -5,7 +5,7 @@ const app = express();
 const PORT = 3000;
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // Route to serve the landing page
 app.get('/', (req, res) => {
