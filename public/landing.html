@@ -72,6 +72,9 @@
     </style>
 </head>
 <body>
+    <div id="preload" class="preload">
+        <div class="loader"></div>
+    </div>
     <div class="landing-container">
         <h1>Welcome</h1>
         <p>Your trusted partner for leveling up in style!</p>
@@ -83,9 +86,16 @@
     <script src="particles.js"></script>
     <script>
         document.querySelector('a').addEventListener('click', function(event) {
-            event.preventDefault(); // Mencegah perilaku default
-            window.location.href = '/main'; // Mengarahkan ke halaman katalog
+            event.preventDefault(); // Prevent default behavior
+            window.location.href = '/main'; // Redirect to the catalog page
         });
+
+        // Preload logic
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('preload').style.display = 'none'; // Hide preload
+            }, 1000);
+        };
     </script>
 </body>
 </html>
