@@ -72,3 +72,12 @@ try {
 } catch (error) {
     console.error("Error setting tabindex for tooltip elements:", error);
 }
+
+const videoContainer = document.getElementById('video-container');
+        const body = document.body;
+    
+        setTimeout(() => {
+          videoContainer.classList.add('hidden');
+          body.classList.remove('preload-active'); // Hapus kelas preload-active setelah video selesai
+          document.body.style.overflow = 'auto'; // Kembalikan scrollbar
+        }, 5000); // Durasi preload 5 detik

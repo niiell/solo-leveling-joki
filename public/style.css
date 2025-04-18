@@ -50,6 +50,7 @@ html {
 body {
     font-family: var(--body-font);
     margin: 0;
+    overflow: hidden; /* Mencegah scrollbar saat video ditampilkan */
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -63,7 +64,51 @@ body {
             scroll-behavior: auto !important;
         }
     }
+
+
 }
+
+#video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black; /* Warna latar belakang jika video transparan */
+    z-index: 1000; /* Pastikan video berada di atas konten lain */
+    opacity: 1;
+    transition: opacity 1s ease-in-out; /* Efek transisi fade out */
+  }
+
+#video-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+#myVideo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Mengisi seluruh layar tanpa distorsi */
+  }
+
+#mainNavbar {
+    position: fixed; /* Atau posisi lain sesuai layout Anda */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; /* Pastikan di bawah video saat preload */
+    /* Styling navbar Anda yang lain */
+  }
+
+.preload-active #mainNavbar {
+    display: none !important; /* Sembunyikan navbar selama preload */
+  }
+
+  #content {
+    position: relative;
+    z-index: 1;
+  }
 
 /* Header Styles */
 header.hero {
