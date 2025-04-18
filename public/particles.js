@@ -1,5 +1,9 @@
 // Particle system configuration
-const config = {
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+const baseConfig = {
   particles: {
     number: {
       value: 80,
@@ -9,7 +13,7 @@ const config = {
       }
     },
     color: {
-      value: ["#2c3e50", "#3498db", "#e67e22"] // Adjusted colors to match Solo Leveling theme
+      value: ["#2c3e50", "#1a1a2e", "#e67e22"] // Adjusted colors to better match Solo Leveling theme
     },
     shape: {
       type: "circle",
@@ -41,7 +45,7 @@ const config = {
     line_linked: {
       enable: true,
       distance: 150,
-      color: "#3498db", // Adjusted line color to match theme
+      color: "#1a1a2e", // Adjusted line color to better match theme
       opacity: 0.4,
       width: 1
     },
@@ -75,7 +79,40 @@ const config = {
   }
 };
 
-// Initialize particles
-document.addEventListener('DOMContentLoaded', function() {
-  particlesJS('particles-js', config);
-});
+const mobileConfig = {
+  particles: {
+    number: {
+      value: 30,
+      density: {
+        enable: true,
+        value_area: 600
+      }
+    },
+    opacity: {
+      anim: {
+        enable: false
+      }
+    },
+    size: {
+      anim: {
+        enable: false
+      }
+    },
+    line_linked: {
+      enable: false
+    },
+    move: {
+      speed: 1,
+      attract: {
+        enable: false
+      }
+    }
+  }
+};
+
+const config = isMobile() ? {...baseConfig, ...mobileConfig} : baseConfig;
+
+ // Initialize particles
+ document.addEventListener('DOMContentLoaded', function() {
+   particlesJS('particles-js', config);
+ });
