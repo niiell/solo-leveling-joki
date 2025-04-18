@@ -58,29 +58,3 @@ document.querySelectorAll('.whatsapp-button a').forEach(button => {
 document.querySelectorAll('[data-tooltip]').forEach(elem => {
     elem.setAttribute('tabindex', '0');
 });
-
-// Dark mode toggle logic
-const darkModeToggle = document.getElementById('dark-mode-toggle');
-const currentTheme = localStorage.getItem('theme') || 'light';
-
-function applyTheme(theme) {
-    if (theme === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        darkModeToggle.textContent = 'Light Mode';
-        darkModeToggle.style.borderColor = '#e67e22';
-        darkModeToggle.style.color = '#e67e22';
-    } else {
-        document.documentElement.removeAttribute('data-theme');
-        darkModeToggle.textContent = 'Dark Mode';
-        darkModeToggle.style.borderColor = 'white';
-        darkModeToggle.style.color = 'white';
-    }
-}
-
-applyTheme(currentTheme);
-
-darkModeToggle.addEventListener('click', () => {
-    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    applyTheme(theme);
-    localStorage.setItem('theme', theme);
-});

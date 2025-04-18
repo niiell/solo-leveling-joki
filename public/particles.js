@@ -9,7 +9,7 @@ const config = {
       }
     },
     color: {
-      value: ["#e67e22", "#d35400", "#f39c12"]
+      value: ["#2c3e50", "#3498db", "#e67e22"] // Adjusted colors to match Solo Leveling theme
     },
     shape: {
       type: "circle",
@@ -41,7 +41,7 @@ const config = {
     line_linked: {
       enable: true,
       distance: 150,
-      color: "#e67e22",
+      color: "#3498db", // Adjusted line color to match theme
       opacity: 0.4,
       width: 1
     },
