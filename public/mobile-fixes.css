@@ -1,5 +1,4 @@
 /* Mobile layout fixes */
-/* 
 @media (max-width: 768px) {
   body {
     overflow: visible !important;
@@ -10,5 +9,23 @@
     opacity: 0.5 !important; /* Slightly transparent to not overpower content */
     pointer-events: none !important; /* Prevent interaction */
   }
+
+  /* Additional mobile-specific styles */
+  nav.navbar {
+    font-size: 14px;
+  }
+  .pricing-grid {
+    padding: 10px;
+  }
+  .grid-container {
+    display: block;
+  }
+  .pricing-card {
+    margin-bottom: 20px;
+    width: 100% !important;
+  }
+  .whatsapp-button a {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
 }
-*/
