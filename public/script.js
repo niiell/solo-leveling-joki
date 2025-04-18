@@ -40,3 +40,38 @@ function updateDateTime() {
 // Call updateDateTime initially and every minute
 updateDateTime();
 setInterval(updateDateTime, 60000);
+
+function attachDropdownListeners() {
+    console.log('Attaching dropdown event listeners');
+    const dropdownHeaders = document.querySelectorAll('.dropdown-header');
+    dropdownHeaders.forEach(header => {
+        header.addEventListener('click', () => {
+            console.log('Dropdown header clicked:', header.textContent);
+            const expanded = header.getAttribute('aria-expanded') === 'true';
+            header.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+            const contentId = header.getAttribute('aria-controls');
+            const content = document.getElementById(contentId);
+            if (content) {
+                if (expanded) {
+                    content.classList.add('collapsed');
+                } else {
+                    content.classList.remove('collapsed');
+                }
+            }
+        });
+
+        // Allow keyboard toggle with Enter or Space
+        header.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                header.click();
+            }
+        });
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachDropdownListeners);
+} else {
+    attachDropdownListeners();
+}

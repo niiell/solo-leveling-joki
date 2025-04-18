@@ -256,12 +256,6 @@ body {
     border-radius: 2px;
 }
 
-@keyframes priceGlow {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-}
-
 .price {
     animation: priceGlow 2s infinite;
 }
@@ -372,28 +366,6 @@ body {
     animation: tooltipFadeOut 0.3s forwards;
 }
 
-@keyframes tooltipFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes tooltipFadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
 /* Preload Styles */
 .preload {
     position: fixed;
@@ -463,4 +435,47 @@ nav[aria-label="Primary navigation"] {
     .nav-menu {
         gap: 0.5rem;
     }
+}
+
+/* Dropdown Section Styles */
+.dropdown-section {
+    margin-bottom: 2rem;
+}
+
+.dropdown-header {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 8px;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-header::after {
+    content: "▼";
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.dropdown-header[aria-expanded="true"]::after {
+    transform: rotate(180deg);
+}
+
+.dropdown-content {
+    overflow: hidden;
+    transition: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+}
+
+.dropdown-content.collapsed {
+    display: none;
+    padding: 0;
+    margin: 0;
 }
