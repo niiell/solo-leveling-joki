@@ -7,13 +7,8 @@ const PORT = 3000;
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
-// Route to serve the landing page
+// Route to serve the main page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Route to serve the main HTML file
-app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
