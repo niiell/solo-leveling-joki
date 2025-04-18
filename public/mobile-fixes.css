@@ -1,0 +1,12 @@
+/* Mobile layout fixes */
+@media (max-width: 768px) {
+  body {
+    overflow: visible !important;
+  }
+  #video-container {
+    position: relative !important;
+    height: auto !important;
+    opacity: 0.5 !important; /* Slightly transparent to not overpower content */
+    pointer-events: none !important; /* Prevent interaction */
+  }
+}
