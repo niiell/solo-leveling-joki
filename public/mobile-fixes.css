@@ -1,46 +1,54 @@
 @media (max-width: 768px) {
   body {
-  overflow: visible !important;
-  }
-  #video-container {
-  position: relative !important;
-  height: auto !important;
-  opacity: 0.5 !important; /* Slightly transparent to not overpower content /
-  pointer-events: none !important; / Prevent interaction */
+    overflow: visible !important;
   }
   
   /* Enhanced mobile-specific styles */
   nav.navbar {
-  font-size: 1rem;
+    font-size: 1rem;
   }
   .pricing-grid {
-  padding: 1rem;
+    padding: 1rem;
   }
   .grid-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
   .pricing-card {
-  flex: 1 1 48%;
-  margin-bottom: 1rem;
-  box-sizing: border-box;
+    flex: 1 1 48%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
   }
   .whatsapp-button a {
-  font-size: 1rem;
-  padding: 0.75rem 1rem;
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
   }
-  }
-  
-  @media (max-width: 480px) {
+}
+
+@media (max-width: 480px) {
   .pricing-card {
-  flex: 1 1 100%;
+    flex: 1 1 100%;
   }
   nav.navbar {
-  font-size: 0.9rem;
+    font-size: 0.9rem;
   }
   .whatsapp-button a {
-  font-size: 0.9rem;
-  padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
   }
+}
+
+/* Additional fixes for smaller devices */
+@media (max-width: 360px) {
+  header.hero {
+    padding: 2rem 1rem 3rem 1rem;
   }
+  .pricing-grid {
+    padding: 1rem 0.5rem;
+  }
+  .whatsapp-button {
+    bottom: 10px;
+    right: 10px;
+  }
+}

@@ -50,7 +50,6 @@ html {
 body {
     font-family: var(--body-font);
     margin: 0;
-    overflow: hidden; /* Mencegah scrollbar saat video ditampilkan */
     padding: 0;
     background-color: var(--background-color);
     color: var(--text-color);
@@ -64,136 +63,25 @@ body {
             scroll-behavior: auto !important;
         }
     }
-
-
 }
 
-#video-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black; /* Warna latar belakang jika video transparan */
-    z-index: 1000; /* Pastikan video berada di atas konten lain */
-    opacity: 1;
-    transition: opacity 1s ease-in-out; /* Efek transisi fade out */
+/* Additional responsive adjustments */
+@media (max-width: 1024px) {
+  main {
+    padding: 3rem 1.5rem 1rem 1.5rem;
   }
+}
 
-#video-container.hidden {
-    opacity: 0;
-    visibility: hidden;
+@media (max-width: 768px) {
+  nav.navbar {
+    padding: 0.5rem 1rem;
   }
+}
 
-#myVideo {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Mengisi seluruh layar tanpa distorsi */
+@media (max-width: 480px) {
+  nav.navbar {
+    padding: 0.5rem 0.5rem;
   }
-
-#mainNavbar {
-    position: fixed; /* Atau posisi lain sesuai layout Anda */
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 999; /* Pastikan di bawah video saat preload */
-    /* Styling navbar Anda yang lain */
-  }
-
-.preload-active #mainNavbar {
-    display: none !important; /* Sembunyikan navbar selama preload */
-  }
-
-  #content {
-    position: relative;
-    z-index: 1;
-  }
-
-/* Header Styles */
-header.hero {
-    background: url('./images/header.gif') center no-repeat;
-    background-size: 100% auto;
-    color: var(--primary-color);
-    padding: 4rem 0 6rem 0; /* Increased padding for better spacing */
-    text-align: center;
-    margin-bottom: 2.5rem;
-    position: relative;
-    width: 100%;
-    border-radius: 0;
-    margin-left: 0;
-    margin-right: 0;
-    will-change: transform, opacity;
-    transform: translateZ(0);
-}
-
-header.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(0,0,0,0.85), rgba(26,26,46,0.7));
-}
-
-header.hero h1 {
-    position: relative;
-    margin: 0;
-    font-family: var(--display-font);
-    font-size: 3.2rem; /* Larger for emphasis */
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
-    color: var(--text-color);
-    opacity: 0;
-    animation: fadeIn 1.5s ease forwards;
-    animation-delay: 0.3s;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
-}
-
-h1, h2, h3 {
-  font-family: var(--display-font);
-}
-
-h2 {
-    font-size: 2.4rem; /* Increased size */
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    color: var(--text-color);
-    margin-bottom: 1rem;
-}
-
-h3 {
-    font-size: 1.8rem; /* Increased size */
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    color: var(--text-color);
-    margin-bottom: 0.75rem;
-}
-
-header.hero h1.behind {
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: rgba(255, 255, 255, 0.1);
-    font-size: 5rem; /* Larger for background effect */
-    text-shadow: none;
-}
-
-/* Main Content Layout */
-main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem 2rem 2rem; /* Added top padding for fixed navbar */
-    font-family: var(--body-font);
 }
 
 /* Pricing Grid Styles */
@@ -235,11 +123,6 @@ main {
     .grid-container {
         grid-template-columns: 1fr;
     }
-}
-
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(50px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 /* Pricing Card Styles - UPDATED */
@@ -296,27 +179,6 @@ main {
         opacity: 1;
         transform: translateY(0) scale(1);
     }
-}
-
-.pricing-card::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg,
-        #9b59b677,
-        #3498db77,
-        #2ecc7177);
-    z-index: -1;
-    border-radius: 14px;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.pricing-card:hover::after {
-    opacity: 1;
 }
 
 /* Dynamic card size based on content */
@@ -548,6 +410,7 @@ main {
 .pricing-card:hover, .whatsapp-button:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    will-change: transform, box-shadow;
 }
 
 /* Fixed Top Navbar Styles */
@@ -571,66 +434,20 @@ nav[aria-label="Primary navigation"] {
     gap: 2rem;
 }
 
-.nav-menu li a {
-    color: var(--text-color);
-    text-decoration: none;
-    font-family: var(--body-font);
-    font-weight: 600;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
+@media (max-width: 768px) {
+    nav[aria-label="Primary navigation"] {
+        padding: 0.5rem 1rem;
+    }
+    .nav-menu {
+        gap: 1rem;
+    }
 }
 
-.nav-menu li a:hover,
-.nav-menu li a:focus {
-    background-color: var(--secondary-color);
-    color: var(--background-color);
-    outline: none;
-}
-
-/* Call to Action Button Styles */
-.cta-button {
-    display: block;
-    margin: 1rem auto 0 auto;
-    padding: 0.75rem 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: var(--background-color);
-    background-color: var(--accent-color);
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(22, 160, 133, 0.6);
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.cta-button:hover,
-.cta-button:focus {
-    background-color: #13856e;
-    box-shadow: 0 6px 16px rgba(19, 133, 110, 0.8);
-    outline: none;
-}
-
-/* Icon Placeholder Styles */
-.icon-placeholder {
-    font-size: 2.5rem;
-    color: var(--secondary-color);
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-/* Subtle Background Pattern */
-body {
-    background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-    background-size: 20px 20px;
-}
-
-/* Footer Styles */
-.site-footer {
-    font-size: 0.9rem;
-    color: var(--text-color);
-    padding: 1.5rem 0;
-    background-color: var(--primary-color);
-    box-shadow: inset 0 1px 3px rgba(255,255,255,0.15);
+@media (max-width: 480px) {
+    nav[aria-label="Primary navigation"] {
+        padding: 0.5rem 0.5rem;
+    }
+    .nav-menu {
+        gap: 0.5rem;
+    }
 }

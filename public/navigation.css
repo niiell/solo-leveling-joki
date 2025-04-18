@@ -6,3 +6,66 @@
     font-weight: 700;
     box-shadow: 0 0 8px var(--accent-color);
 }
+
+/* Responsive Navigation Styles */
+#nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    #nav-toggle {
+        display: block;
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        z-index: 1200;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        background-color: var(--primary-color);
+        position: fixed;
+        top: 3.5rem;
+        right: 0;
+        width: 200px;
+        max-width: 80vw;
+        height: calc(100vh - 3.5rem);
+        padding-top: 1rem;
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+        overflow-y: auto;
+        z-index: 1100;
+    }
+
+    .nav-menu.open {
+        transform: translateX(0);
+    }
+
+    .nav-menu li {
+        margin: 0.5rem 0;
+        text-align: right;
+        padding: 0 1rem;
+    }
+
+    .nav-menu li a {
+        display: block;
+        font-size: 1.2rem;
+        padding: 0.5rem 0;
+    }
+}
