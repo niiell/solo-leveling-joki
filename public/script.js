@@ -74,10 +74,21 @@ try {
 }
 
 const videoContainer = document.getElementById('video-container');
-        const body = document.body;
-    
-        setTimeout(() => {
-          videoContainer.classList.add('hidden');
-          body.classList.remove('preload-active'); // Hapus kelas preload-active setelah video selesai
-          document.body.style.overflow = 'auto'; // Kembalikan scrollbar
-        }, 5000); // Durasi preload 5 detik
+const body = document.body;
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (isMobile()) {
+  // For mobile users, remove preload-active class immediately and do not run timeout
+  body.classList.remove('preload-active');
+  document.body.style.overflow = 'auto'; // Ensure scrollbar is enabled
+} else {
+  // For non-mobile users, keep existing timeout to remove preload-active class after 5 seconds
+  setTimeout(() => {
+    videoContainer.classList.add('hidden');
+    body.classList.remove('preload-active'); // Remove preload-active class after video finishes
+    document.body.style.overflow = 'auto'; // Restore scrollbar
+  }, 5000); // Preload duration 5 seconds
+}
