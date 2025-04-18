@@ -9,7 +9,7 @@ app.use(express.static(path.join(__dirname, 'public'), { index: false }));
 
 // Route to serve the landing page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'landing.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Route to serve the main HTML file

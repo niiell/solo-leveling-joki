@@ -1,0 +1,25 @@
+/* Landing page enhancements */
+.cta-button {
+    background-color: #e67e22;
+    color: white;
+    border-radius: 5px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.cta-button:hover, .cta-button:focus {
+    background-color: #d35400;
+    transform: scale(1.05);
+    outline: none;
+}
+
+.benefits-list {
+    max-width: 600px;
+    margin: 0 auto;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
