@@ -1,0 +1,8 @@
+/* Active navigation item styling */
+.nav-menu li a.active,
+.nav-menu li a[aria-current="page"] {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    font-weight: 700;
+    box-shadow: 0 0 8px var(--accent-color);
+}

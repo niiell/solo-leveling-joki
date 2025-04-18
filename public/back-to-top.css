@@ -14,8 +14,15 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
+}
+
+#back-to-top:hover,
+#back-to-top:focus {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+    outline: none;
 }
 
 #back-to-top:focus {
@@ -27,3 +34,4 @@
     opacity: 1;
     visibility: visible;
 }
+</create_file>
