@@ -26,6 +26,12 @@ function updateDateTime() {
         if (dateTimeElement) {
             dateTimeElement.textContent = dateTimeString;
         }
+
+        // Update the current year in footer
+        const yearElement = document.getElementById('current-year');
+        if (yearElement) {
+            yearElement.textContent = year;
+        }
     } catch (error) {
         console.error('Error updating date and time:', error);
     }
@@ -34,17 +40,3 @@ function updateDateTime() {
 // Call updateDateTime initially and every minute
 updateDateTime();
 setInterval(updateDateTime, 60000);
-
-// Mobile navigation toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function () {
-            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
-            navToggle.setAttribute('aria-expanded', !isExpanded);
-            navMenu.classList.toggle('open');
-        });
-    }
-});
