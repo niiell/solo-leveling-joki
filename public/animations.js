@@ -30,4 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(button, { scale: 1, boxShadow: "0 2px 5px rgba(0,0,0,0.2)", duration: 0.3 });
     });
   });
+
+  // Animate pricing card content on hover
+  const pricingCards = document.querySelectorAll('.pricing-card');
+  pricingCards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      gsap.to(card.querySelector('h3'), { y: -10, duration: 0.3, ease: "power1.out" });
+      gsap.to(card.querySelector('.price'), { y: -10, duration: 0.3, ease: "power1.out" });
+      gsap.to(card.querySelector('ul'), { y: -10, duration: 0.3, ease: "power1.out" });
+    });
+    card.addEventListener('mouseleave', () => {
+      gsap.to(card.querySelector('h3'), { y: 0, duration: 0.3, ease: "power1.out" });
+      gsap.to(card.querySelector('.price'), { y: 0, duration: 0.3, ease: "power1.out" });
+      gsap.to(card.querySelector('ul'), { y: 0, duration: 0.3, ease: "power1.out" });
+    });
+  });
 });
