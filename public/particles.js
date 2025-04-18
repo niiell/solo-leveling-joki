@@ -3,6 +3,11 @@ function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
+
+function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 const baseConfig = {
   particles: {
     number: {
@@ -110,9 +115,28 @@ const mobileConfig = {
   }
 };
 
-const config = isMobile() ? {...baseConfig, ...mobileConfig} : baseConfig;
+function isLowPerformanceDevice() {
+  // Simple heuristic: disable particles on devices with low memory or slow CPU
+  if (navigator.deviceMemory && navigator.deviceMemory < 2) {
+    return true;
+  }
+  if (window.navigator.hardwareConcurrency && window.navigator.hardwareConcurrency < 2) {
+    return true;
+  }
+  return false;
+}
 
- // Initialize particles
- document.addEventListener('DOMContentLoaded', function() {
-   particlesJS('particles-js', config);
- });
+const config = isLowPerformanceDevice() ? {} : (isMobile() ? {...baseConfig, ...mobileConfig} : baseConfig);
+
+// Initialize particles
+document.addEventListener('DOMContentLoaded', function() {
+  if (Object.keys(config).length === 0) {
+    // Disable particles on low performance devices
+    const particlesContainer = document.getElementById('particles-js');
+    if (particlesContainer) {
+      particlesContainer.style.display = 'none';
+    }
+    return;
+  }
+  particlesJS('particles-js', config);
+});

@@ -12,17 +12,32 @@
   animation: pulse 3s infinite;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .cta-button {
+    animation: none !important;
+  }
+}
+
 /* Pricing Card Icon Colors */
 .daily-icon {
   color: #f39c12; /* Orange */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\\f005"; /* star icon */
 }
 
 .weekly-icon {
   color: #e74c3c; /* Red */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\\f0a3"; /* bolt icon */
 }
 
 .monthly-icon {
   color: #8e44ad; /* Purple */
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\\f0f3"; /* bell icon */
 }
 
 /* Pricing Card Background Variations */
