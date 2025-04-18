@@ -120,7 +120,7 @@ header.hero h1.behind {
 main {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem; /* Increased horizontal padding */
+    padding: 4rem 2rem 2rem 2rem; /* Added top padding for fixed navbar */
 }
 
 /* Pricing Grid Styles */
@@ -459,4 +459,43 @@ main {
 .pricing-card:hover, .whatsapp-button:hover {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+/* Fixed Top Navbar Styles */
+nav[aria-label="Primary navigation"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    z-index: 1100;
+    padding: 0.5rem 2rem;
+}
+
+.nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.nav-menu li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-family: var(--body-font);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a:focus {
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    outline: none;
 }

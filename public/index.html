@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Katalog Joki Solo Leveling</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="back-to-top.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -18,8 +19,17 @@
     <header class="hero">
         <h1 class="fade-in behind">LEIZ JOKI</h1>
     </header>
+
+    <nav aria-label="Primary navigation">
+        <ul class="nav-menu">
+            <li><a href="#packages" tabindex="0">Packages</a></li>
+            <li><a href="#workshop-brilliant-light" tabindex="0">Workshop of Brilliant Light</a></li>
+            <li><a href="#workshop-artefact" tabindex="0">Workshop Artefact</a></li>
+        </ul>
+    </nav>
+
     <main>
-        <section class="pricing-grid">
+        <section id="packages" class="pricing-grid">
             <h2 style="text-align: center;">Packages</h2>
             <div class="grid-container">
                 <div class="pricing-card daily" data-service="daily">
@@ -27,6 +37,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Daily%20sebesar%20Rp25.000%20dengan%20fitur:%20Gate,%20Encore,%20Instant"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Daily package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -45,6 +58,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Weekly%20sebesar%20Rp150.000%20dengan%20fitur:%20Gate,%20Encore,%20Instant,%20BoT,%20BoTC,%20PoD"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Weekly package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -66,6 +82,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Monthly%20sebesar%20Rp350.000%20dengan%20fitur:%20Gate,%20Encore,%20Instant,%20BoT,%20BoTC,%20PoD,%20WoBL,%20Gate%20Simulation"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Monthly package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -85,7 +104,7 @@
                 </div>
             </div>
         </section>
-        <section class="pricing-grid">
+        <section id="workshop-brilliant-light" class="pricing-grid">
             <h2 style="text-align: center;">Workshop of Brilliant Light</h2>
             <div class="grid-container">
                 <div class="pricing-card">
@@ -93,6 +112,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Easy%20sebesar%20Rp20.000%20per%20Run"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Easy package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -105,6 +127,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Normal%20sebesar%20Rp30.000%20per%20Run"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Normal package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -117,6 +142,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Hard%20sebesar%20Rp35.000%20per%20Run"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Hard package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -126,7 +154,7 @@
                 </div>
             </div>
         </section>
-        <section class="pricing-grid">
+        <section id="workshop-artefact" class="pricing-grid">
             <h2 style="text-align: center;">Workshop Artefact</h2>
             <div class="grid-container">
                 <div class="pricing-card fast-track">
@@ -134,6 +162,9 @@
                         <a
                           href="https://wa.me/6281234567890?text=Saya%20tertarik%20dengan%20paket%20Set%20Arte%20sebesar%20Rp10.000"
                           target="_blank"
+                          role="button"
+                          aria-label="Order Set Arte package via WhatsApp"
+                          tabindex="0"
                         >
                             <i class="fab fa-whatsapp"></i> Order Now
                         </a>
@@ -144,6 +175,11 @@
             </div>
         </section>
     </main>
+
+    <button id="back-to-top" aria-label="Back to top" title="Back to top" tabindex="0">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <div id="particles-js"></div>
     <script
       src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"
@@ -159,4 +195,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="animations.js" async defer></script>
     <script src="script.js" async defer></script>
+    <script src="back-to-top.js" async defer></script>
+    <script src="fix-nav.js" async defer></script>
 </html>

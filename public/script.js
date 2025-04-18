@@ -1,8 +1,4 @@
-// Existing code
-document.querySelector('a').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default behavior
-    window.location.href = '/main'; // Redirect to the catalog page
-});
+// Function to update date and time in the footer
 
 // Function to update date and time in the footer
 function updateDateTime() {
