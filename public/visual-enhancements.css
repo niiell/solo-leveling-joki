@@ -109,3 +109,65 @@
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 1rem;
 }
+
+/* New CSS Animations */
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide up */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Apply fadeInLeft to elements with .fade-in-left */
+.fade-in-left {
+  animation: fadeInLeft 1s ease forwards;
+}
+
+/* Apply fadeInRight to elements with .fade-in-right */
+.fade-in-right {
+  animation: fadeInRight 1s ease forwards;
+}
+
+/* Apply slideUp to elements with .slide-up */
+.slide-up {
+  animation: slideUp 1s ease forwards;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-left,
+  .fade-in-right,
+  .slide-up {
+    animation: none !important;
+  }
+}

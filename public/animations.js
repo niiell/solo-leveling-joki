@@ -98,4 +98,36 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(button, { scale: 1, duration: 0.1, ease: "power1.out" });
     });
   });
+
+  // New: Scroll-triggered animations for sections using IntersectionObserver
+  const sections = document.querySelectorAll('section');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        gsap.to(entry.target, {opacity: 1, y: 0, duration: 1, ease: "power3.out"});
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    gsap.set(section, {opacity: 0, y: 50});
+    sectionObserver.observe(section);
+  });
+
+  // New: Parallax effect on hero background on scroll
+  const hero = document.querySelector('header.hero');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    if (hero) {
+      gsap.to(hero, {backgroundPositionY: scrollY * 0.5, ease: "power1.out", overwrite: "auto"});
+    }
+  });
+
 });

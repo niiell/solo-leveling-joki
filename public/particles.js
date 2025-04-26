@@ -3,11 +3,6 @@ function isMobile() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
-
-function isMobile() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
 const baseConfig = {
   particles: {
     number: {
@@ -79,6 +74,31 @@ const baseConfig = {
       onclick: {
         enable: true,
         mode: "push"
+      }
+    },
+    modes: {
+      grab: {
+        distance: 200,
+        line_linked: {
+          opacity: 0.7
+        }
+      },
+      bubble: {
+        distance: 250,
+        size: 5,
+        duration: 2,
+        opacity: 0.8,
+        speed: 3
+      },
+      repulse: {
+        distance: 100,
+        duration: 0.4
+      },
+      push: {
+        particles_nb: 4
+      },
+      remove: {
+        particles_nb: 2
       }
     }
   }

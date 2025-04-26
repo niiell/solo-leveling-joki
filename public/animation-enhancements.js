@@ -19,6 +19,28 @@ function getScrollOffsetY() {
   }
 }
 
+// Throttle function to limit event firing rate
+function throttle(func, limit) {
+  let lastFunc;
+  let lastRan;
+  return function() {
+    const context = this;
+    const args = arguments;
+    if (!lastRan) {
+      func.apply(context, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(function() {
+        if ((Date.now() - lastRan) >= limit) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        }
+      }, limit - (Date.now() - lastRan));
+    }
+  };
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (prefersReducedMotion() || isMobile()) {
     // Disable or simplify animations for reduced motion or mobile devices
@@ -64,4 +86,18 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.to(button, { scale: 1, boxShadow: "none", duration: 0.3 });
     });
   });
+
+  // New: Optimize scroll event with throttling for performance
+  window.addEventListener('scroll', throttle(() => {
+    // Example: Animate nav background color change on scroll
+    const nav = document.querySelector('nav[aria-label="Primary navigation"]');
+    if (nav) {
+      if (window.scrollY > 50) {
+        gsap.to(nav, { backgroundColor: "#1a1a2e", duration: 0.5 });
+      } else {
+        gsap.to(nav, { backgroundColor: "transparent", duration: 0.5 });
+      }
+    }
+  }, 200));
+
 });
