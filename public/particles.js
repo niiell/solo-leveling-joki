@@ -69,11 +69,11 @@ const baseConfig = {
     events: {
       onhover: {
         enable: true,
-        mode: "grab"
+        mode: ["grab", "bubble"]
       },
       onclick: {
         enable: true,
-        mode: "push"
+        mode: ["push", "repulse"]
       }
     },
     modes: {

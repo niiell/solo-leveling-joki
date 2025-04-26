@@ -87,9 +87,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // New: Optimize scroll event with throttling for performance
+  // New: Interactive micro-animations on form inputs and other elements
+  const inputs = document.querySelectorAll('input, textarea, select');
+  inputs.forEach(input => {
+    input.addEventListener('focus', () => {
+      gsap.to(input, { boxShadow: "0 0 8px #e67e22", duration: 0.3 });
+    });
+    input.addEventListener('blur', () => {
+      gsap.to(input, { boxShadow: "none", duration: 0.3 });
+    });
+  });
+
+  // New: Lazy loading animations using IntersectionObserver
+  const lazyElements = document.querySelectorAll('.lazy-animate');
+  const lazyObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        gsap.to(entry.target, {opacity: 1, y: 0, duration: 1, ease: "power3.out"});
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.1});
+
+  lazyElements.forEach(el => {
+    gsap.set(el, {opacity: 0, y: 50});
+    lazyObserver.observe(el);
+  });
+
+  // Optimize scroll event with throttling for performance
   window.addEventListener('scroll', throttle(() => {
-    // Example: Animate nav background color change on scroll
     const nav = document.querySelector('nav[aria-label="Primary navigation"]');
     if (nav) {
       if (window.scrollY > 50) {
@@ -99,5 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }, 200));
-
 });

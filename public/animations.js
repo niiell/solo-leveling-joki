@@ -99,35 +99,74 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // New: Scroll-triggered animations for sections using IntersectionObserver
-  const sections = document.querySelectorAll('section');
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
+  // Advanced Scroll Animations using GSAP ScrollTrigger
+  if (typeof gsap !== "undefined" && gsap.registerPlugin) {
+    gsap.registerPlugin(ScrollTrigger);
 
-  const sectionObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        gsap.to(entry.target, {opacity: 1, y: 0, duration: 1, ease: "power3.out"});
-        observer.unobserve(entry.target);
+    // Animate sections on scroll
+    gsap.utils.toArray("section").forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power3.out"
+      });
+    });
+
+    // Animate hero image or background with parallax effect
+    const hero = document.querySelector("header.hero");
+    if (hero) {
+      gsap.to(hero, {
+        backgroundPositionY: "50%",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: true
+        }
+      });
+    }
+
+    // Animation Timeline for coordinated animations
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".pricing-section",
+        start: "top 80%",
+        toggleActions: "play none none none"
       }
     });
-  }, observerOptions);
 
-  sections.forEach(section => {
-    gsap.set(section, {opacity: 0, y: 50});
-    sectionObserver.observe(section);
-  });
+    timeline.from(".pricing-section h2", {opacity: 0, y: 30, duration: 0.5});
+    timeline.from(".pricing-card", {
+      opacity: 0,
+      y: 30,
+      stagger: 0.2,
+      duration: 0.5
+    }, "-=0.3");
 
-  // New: Parallax effect on hero background on scroll
-  const hero = document.querySelector('header.hero');
-  window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-    if (hero) {
-      gsap.to(hero, {backgroundPositionY: scrollY * 0.5, ease: "power1.out", overwrite: "auto"});
+    // New: 3D rotation effect on hero title on mouse move
+    const heroTitle = document.querySelector("header.hero h1");
+    if (heroTitle) {
+      heroTitle.style.transformStyle = "preserve-3d";
+      heroTitle.parentElement.style.perspective = "1000px";
+
+      heroTitle.parentElement.addEventListener("mousemove", (e) => {
+        const rect = heroTitle.parentElement.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (-y / rect.height) * 15;
+        const rotateY = (x / rect.width) * 15;
+        gsap.to(heroTitle, {rotationX: rotateX, rotationY: rotateY, duration: 0.3, ease: "power1.out"});
+      });
+
+      heroTitle.parentElement.addEventListener("mouseleave", () => {
+        gsap.to(heroTitle, {rotationX: 0, rotationY: 0, duration: 0.5, ease: "power1.out"});
+      });
     }
-  });
-
+  }
 });

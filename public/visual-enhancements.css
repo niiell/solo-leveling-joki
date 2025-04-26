@@ -148,26 +148,59 @@
   }
 }
 
-/* Apply fadeInLeft to elements with .fade-in-left */
-.fade-in-left {
-  animation: fadeInLeft 1s ease forwards;
+/* Neon glow animation */
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 5px #e67e22,
+      0 0 10px #e67e22,
+      0 0 20px #e67e22,
+      0 0 40px #e67e22,
+      0 0 80px #e67e22;
+    color: #fff;
+  }
+  50% {
+    text-shadow:
+      0 0 10px #f39c12,
+      0 0 20px #f39c12,
+      0 0 30px #f39c12,
+      0 0 50px #f39c12,
+      0 0 100px #f39c12;
+    color: #fff;
+  }
 }
 
-/* Apply fadeInRight to elements with .fade-in-right */
-.fade-in-right {
-  animation: fadeInRight 1s ease forwards;
+/* Apply neon glow to elements with .neon-glow */
+.neon-glow {
+  animation: neonGlow 3s ease-in-out infinite;
 }
 
-/* Apply slideUp to elements with .slide-up */
-.slide-up {
-  animation: slideUp 1s ease forwards;
+/* Animated gradient background */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(270deg, #e67e22, #f39c12, #e67e22, #f39c12);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
 }
 
 /* Respect reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   .fade-in-left,
   .fade-in-right,
-  .slide-up {
+  .slide-up,
+  .neon-glow,
+  .animated-gradient {
     animation: none !important;
   }
 }
