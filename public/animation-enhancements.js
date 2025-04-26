@@ -87,22 +87,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // New: Interactive micro-animations on form inputs and other elements
-  const inputs = document.querySelectorAll('input, textarea, select');
-  inputs.forEach(input => {
-    input.addEventListener('focus', () => {
-      gsap.to(input, { boxShadow: "0 0 8px #e67e22", duration: 0.3 });
+  // New: User customization for animation intensity
+  const animationToggle = document.getElementById('animation-toggle');
+  if (animationToggle) {
+    animationToggle.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        document.body.classList.remove('reduce-motion');
+      } else {
+        document.body.classList.add('reduce-motion');
+      }
     });
-    input.addEventListener('blur', () => {
-      gsap.to(input, { boxShadow: "none", duration: 0.3 });
-    });
-  });
+  }
 
-  // New: Lazy loading animations using IntersectionObserver
+  // Apply reduced motion class styles
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    document.body.classList.add('reduce-motion');
+  }
+
+  // Lazy loading animations using IntersectionObserver
   const lazyElements = document.querySelectorAll('.lazy-animate');
   const lazyObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && !document.body.classList.contains('reduce-motion')) {
         gsap.to(entry.target, {opacity: 1, y: 0, duration: 1, ease: "power3.out"});
         observer.unobserve(entry.target);
       }
